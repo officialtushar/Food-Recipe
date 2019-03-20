@@ -4,10 +4,11 @@
   <mat-card class="example-card"  *ngFor="let recipe of allRecipes" >
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{recipe.name}}</mat-card-title>
+      <mat-card-title [ngClass]="{ 'cut-length': recipe.name.length > 10}">{{recipe.name}}</mat-card-title>
     <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <!-- <img mat-card-image src="https://dcassetcdn.com/design_img/1442230/51618/51618_7323624_1442230_c91dc92a_image.jpg" alt="Photo of a Shiba Inu"> -->
+  <img mat-card-image src="assets/images/logo.jpg" alt="Photo of a Shiba Inu">
   <mat-chip-list class="mat-chip-list-stacked">
       <mat-chip *ngFor="let chip of availableColors" selected [color]="chip.color" >
            {{chip.name}}

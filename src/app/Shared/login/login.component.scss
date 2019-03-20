@@ -5,13 +5,28 @@
   z-index: 15;
   top: 30%;
   left: 50%;
-  margin: 10px 0 0 -150px;
+  margin: 20px 0 0 -165px;
   // background: red;
 }
+
 
 .example-card {
   width: 100%;
   // max-height: 200px;
+}
+
+.mat-card-title {
+  position: relative;
+  left: 70px;
+  color: #45A29E
+}
+
+.mat-stroked-button {
+  position: relative;
+  left: 38%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  letter-spacing: 1px;
 }
 
 mat-card {

@@ -17,8 +17,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
 
-  _hostStyle :any;
-
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,

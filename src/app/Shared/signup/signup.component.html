@@ -1,3 +1,52 @@
-<p>
-  signup works!
-</p>
+<div class="card-container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Signup</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Username"
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('username') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Please enter a valid username
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Password"
+          [formControl]="passwordFormControl"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error
+          *ngIf="
+            passwordFormControl.hasError('password') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Please enter a valid password
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+    <button mat-stroked-button>Submit</button>
+  </mat-card>
+</div>
