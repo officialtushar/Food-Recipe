@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span class="nav-title">Food Recipes</span>
+    <span class="nav-title" (click)="goToRecipes()">Food Recipes</span>
+    <span class="nav-title-route" *ngIf="updatedRoute.present == true">/{{updatedRoute.name | titlecase}}</span>
+
     <span class="example-spacer"></span>
 
   </mat-toolbar-row>

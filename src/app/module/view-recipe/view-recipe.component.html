@@ -4,7 +4,7 @@
   <mat-card class="example-card"  >
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title [ngClass]="{ 'cut-length': recipe.name.length > 10}">{{recipe.name}}</mat-card-title>
+      <mat-card-title [ngClass]="{ 'cut-length': recipe.name.length > 10}">{{recipe.name | titlecase}}</mat-card-title>
     <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
   <!-- <img mat-card-image src="https://dcassetcdn.com/design_img/1442230/51618/51618_7323624_1442230_c91dc92a_image.jpg" alt="Photo of a Shiba Inu"> -->
@@ -24,17 +24,46 @@
     </mat-expansion-panel-header>
 
     <mat-list>
-      <mat-list-item *ngFor="let ingredient of recipe.ingredients">
+      <!-- <mat-list-item *ngFor="let ingredient of recipe.ingredients">
         <mat-icon mat-list-icon>label</mat-icon>
         <h4 mat-line>{{ingredient}}</h4>
+        <mat-icon mat-list-icon>delete_outline</mat-icon>
         <mat-divider></mat-divider>
-      </mat-list-item>
+      </mat-list-item> -->
+      <mat-list>
+        <mat-list-item *ngFor="let ingredient of  recipe.ingredients; let i = index;">
+          <mat-icon mat-list-icon>label</mat-icon>
+          <h4 mat-line>{{ingredient | titlecase}}</h4>
+          <!-- <button mat-icon-button (click)="remove(1)">
+            <mat-icon class="mat-24">create_outline</mat-icon>
+            <mat-icon class="mat-24">delete_outline</mat-icon>
+          </button> -->
+             <button mat-icon-button [matMenuTriggerFor]="menu" >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" style="background: #3b4757">
+              <button mat-menu-item>
+                <mat-icon>create_outline</mat-icon>
+                <span>EDIT</span>
+              </button>
+              <button mat-menu-item (click)="deleteRecipe(recipe,ingredient,i)">
+                <mat-icon>delete_outline</mat-icon>
+                <span>DELETE</span>
+              </button>
+
+            </mat-menu>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
 
     </mat-list>
 
   </mat-expansion-panel>
 </mat-accordion>
 
+
 </div>
+
+
 
 

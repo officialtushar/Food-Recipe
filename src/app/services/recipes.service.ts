@@ -36,4 +36,16 @@ export class RecipesService {
       })
     );
   }
+
+  updateRecipe(recipeId,payload) {
+
+    console.log(recipeId);
+    console.log('payload',payload);
+
+    return this.http.put(environment.dev_url +  'recipes/' + recipeId, payload).pipe(
+      map(res => {
+        return res;
+      })
+    );
+  }
 }

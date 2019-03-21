@@ -19,6 +19,10 @@ mat-card-title {
   // right: 20%;
 }
 
+mat-panel-title {
+  color: #45a29e
+}
+
 .mat-chip-list-wrapper .mat-standard-chip {
   margin: 0px;
 }
@@ -50,7 +54,6 @@ mat-card-title {
 }
 
 
-
 .mat-accordion {
   width: 100%;
 }
@@ -79,4 +82,18 @@ mat-card {
 
 .mat-expansion-panel {
   background: #1f2833
+}
+
+
+.mat-snack-bar-container {
+  color: red !important;
+}
+
+snack-bar-container.snack-light {
+  background-color: black;
+}
+
+.snack-red simple-snack-bar.mat-simple-snackbar {
+  // color: map-get($mat-red, 500);
+  color: #45a29e
 }
