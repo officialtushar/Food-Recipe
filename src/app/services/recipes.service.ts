@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 
+import {environment} from '../../environments/environment.dev';
+
 @Injectable({
   providedIn: "root"
 })
@@ -14,8 +16,20 @@ export class RecipesService {
 
   getRecipes() {
     // console.log('get order');
+    console.log(environment.dev_url)
 
-    return this.http.get("http://localhost:3000/recipes").pipe(
+    return this.http.get( environment.dev_url + 'recipes').pipe(
+      map(res => {
+        console.log("getting the data", res);
+        return res;
+      })
+    );
+  }
+
+  getSpecificRecipe(recipeId) {
+    // console.log('get order');
+
+    return this.http.get(environment.dev_url +  'recipes/' + recipeId).pipe(
       map(res => {
         console.log("getting the data", res);
         return res;

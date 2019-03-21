@@ -49,6 +49,11 @@ mat-card-title {
   margin-right: 12%;
 }
 
+
+
+.mat-accordion {
+  width: 100%;
+}
 mat-chip {
   cursor: pointer;
   // background-color: #4b9199
@@ -62,4 +67,16 @@ mat-card {
   // background:#1F2833;
   background: #1f2833;
   margin: 1%;
+}
+
+// Mat divider
+.mat-divider {
+  background-color: #4b9199;
+}
+
+
+// Mat accordion
+
+.mat-expansion-panel {
+  background: #1f2833
 }

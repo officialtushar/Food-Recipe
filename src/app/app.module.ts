@@ -1,3 +1,4 @@
+import { ViewRecipeComponent } from './module/view-recipe/view-recipe.component';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, Sanitizer } from "@angular/core";
 
@@ -14,13 +15,15 @@ import { HeaderComponent } from "./Shared/header/header.component";
 import { RecipesComponent } from "./module/recipes/recipes.component";
 
 import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     HeaderComponent,
-    RecipesComponent
+    RecipesComponent,
+    ViewRecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +33,6 @@ import { HttpClientModule } from "@angular/common/http";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

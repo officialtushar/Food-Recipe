@@ -1,0 +1,40 @@
+
+<div id="card-container">
+
+  <mat-card class="example-card"  >
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title [ngClass]="{ 'cut-length': recipe.name.length > 10}">{{recipe.name}}</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <!-- <img mat-card-image src="https://dcassetcdn.com/design_img/1442230/51618/51618_7323624_1442230_c91dc92a_image.jpg" alt="Photo of a Shiba Inu"> -->
+  <img mat-card-image src="assets/images/logo.jpg" alt="Photo of a Shiba Inu">
+
+</mat-card>
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        INGREDIENTS
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-list>
+      <mat-list-item *ngFor="let ingredient of recipe.ingredients">
+        <mat-icon mat-list-icon>label</mat-icon>
+        <h4 mat-line>{{ingredient}}</h4>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+
+    </mat-list>
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+</div>
+
+

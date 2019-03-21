@@ -7,6 +7,9 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatInputModule } from "@angular/material/input";
 
 import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -17,7 +20,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatCardModule,
     MatChipsModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule,
+    MatListModule
   ],
   exports: [
     MatButtonModule,
@@ -27,7 +32,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatCardModule,
     MatChipsModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule,
+    MatListModule
   ]
 })
 export class MaterialModule {}
