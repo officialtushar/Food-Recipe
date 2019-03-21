@@ -16,8 +16,14 @@ import { RecipeObservableService } from 'src/app/observables/recipe-observable.s
 export class ViewRecipeComponent implements OnInit {
   panelOpenState = false;
 
+  editable = "true";
+  editedValue :String;
+
+  showTextField :any;
+
   recipeId: String;
   recipe :any;
+  value = '';
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -69,6 +75,84 @@ export class ViewRecipeComponent implements OnInit {
     })
 
     console.log(recipe.ingredients);
+  }
+
+  editRecipe(recipe ,ingredient, index) {
+
+    const checkMatch = 'editable-' + index;
+
+
+    const el = document.getElementById('editable-' + index);
+    el.contentEditable = 'true';
+    el.style.border = '1px solid #45a29e';
+    // console.log(el.content);
+  }
+
+
+  editValue(editedValue,ingredient,i,event) {
+    // console.log('editable-' + i)
+    // console.log(document.getElementById('editable-' + i));
+    const el = document.getElementById('editable-' + i);
+    el.contentEditable = 'false';
+    console.log(el.innerText.trim());
+
+    console.log('index',i);
+    console.log('recipe',this.recipe);
+
+    this.recipe.ingredients.forEach((element,index) => {
+      if(index === i ) {
+        this.recipe.ingredients[index] = el.innerText.trim()
+      }
+
+    });
+
+    console.log('modified',this.recipe);
+
+    const payload = {
+      name: this.recipe.name,
+      ingredients: this.recipe.ingredients
+    }
+
+
+    this.recipeService.updateRecipe(this.recipe._id,payload).subscribe((updatedRecipe) => {
+      console.log('updated product found',updatedRecipe);
+      const message = `Edit success`;
+
+      this.snackbar.open(message, '', {
+        duration: 2000,
+        panelClass: ['blue-snackbar']
+      });
+      // this.recipe = updatedRecipe;
+    })
+
+
+
+
+
+  }
+
+
+  showField() {
+    this.showTextField = true;
+  }
+
+  SaveValue() {
+    this.showTextField = false;
+    this.recipe.ingredients.push(this.value);
+
+
+    const payload = {
+      name: this.recipe.name,
+      ingredients: this.recipe.ingredients
+    }
+
+    this.recipeService.updateRecipe(this.recipe._id,payload).subscribe((updatedRecipe) => {
+      console.log('updated product found',updatedRecipe);
+      // this.recipe = updatedRecipe;
+    })
+
+    console.log(this.recipe);
+
   }
 
 }

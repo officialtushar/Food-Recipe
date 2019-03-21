@@ -12,6 +12,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+
 
 
 @NgModule({
@@ -27,8 +31,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatExpansionModule,
     MatListModule,
     MatMenuModule,
-    MatSnackBarModule
-  ],
+    MatSnackBarModule,
+    MatBottomSheetModule,
+    MatTooltipModule
+    ],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
@@ -41,7 +47,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatExpansionModule,
     MatListModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBottomSheetModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule {}
