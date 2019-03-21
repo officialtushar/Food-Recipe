@@ -7,6 +7,13 @@
   border-radius: 5%;
 }
 
+.add-recipe {
+  position: relative;
+  top: 65px;
+  left: 5%;
+  font-size: 34px;
+  cursor: pointer;
+}
 
 .example-header-image {
   background-size: cover;
@@ -17,6 +24,11 @@ mat-card-title {
   width: auto;
   position: absolute;
   // right: 20%;
+}
+
+.menu-icon {
+  position: absolute;
+  right: 10%;
 }
 
 .mat-chip-list-wrapper .mat-standard-chip {

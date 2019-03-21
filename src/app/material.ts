@@ -14,6 +14,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -33,7 +34,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatSnackBarModule,
     MatBottomSheetModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
     ],
   exports: [
     MatButtonModule,
@@ -49,7 +51,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatSnackBarModule,
     MatBottomSheetModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {}

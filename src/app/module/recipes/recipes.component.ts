@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { RecipeObservableService } from "src/app/observables/recipe-observable.service";
 
 
+
 export interface ChipColor {
   name: string;
   color: ThemePalette;
@@ -35,8 +36,6 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit() {
 
-
-    console.log('GOT USER',this.user)
     this.getAllRecipes();
     this.recipeObservable.updateRecipeRoute('Recipies', false);
 
@@ -58,6 +57,24 @@ export class RecipesComponent implements OnInit {
 
     // update the observale
     this.recipeObservable.updateRecipeRoute(recipe.name, false);
+  }
+
+  removeRecipe(recipe,index) {
+    this.allRecipes.splice(index, 1);
+
+    console.log('recipe id',recipe._id);
+
+    this.recipeService.deleteRecipe(recipe._id).subscribe((result) => {
+        console.log('result retained', result);
+    })
+
+    console.log('total recipes',this.allRecipes);
+
+
+  }
+
+  addRecipe() {
+
   }
 
 }
