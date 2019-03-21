@@ -28,7 +28,7 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit() {
     this.getAllRecipes();
-    this.recipeObservable.updateRecipeRoute('Recipies');
+    this.recipeObservable.updateRecipeRoute('Recipies', false);
   }
 
   getAllRecipes() {

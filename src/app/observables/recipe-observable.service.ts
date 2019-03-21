@@ -14,10 +14,10 @@ export class RecipeObservableService {
   constructor() { }
 
 
-  updateRecipeRoute(updatedRoute) {
+  updateRecipeRoute(updatedRoute,presentToken) {
     const route =  {
       name: updatedRoute,
-      present: true
+      present: presentToken
     }
     this.recipeRoute.next(route);
   }

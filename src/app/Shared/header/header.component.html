@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span class="nav-title" (click)="goToRecipes()">Food Recipes</span>
+    <span class="nav-title" >Food Recipes</span>
+    <span class="nav-title-fixed" (click)="goToRecipes()" *ngIf="updatedRoute.present == false || updatedRoute.name != null " (click)="goToRecipes()">/Recipes</span>
     <span class="nav-title-route" *ngIf="updatedRoute.present == true">/{{updatedRoute.name | titlecase}}</span>
 
     <span class="example-spacer"></span>
