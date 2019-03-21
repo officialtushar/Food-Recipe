@@ -20,6 +20,8 @@ import { HeaderComponent } from "./Shared/header/header.component";
 import { RecipesComponent } from "./module/recipes/recipes.component";
 
 import { HttpClientModule } from "@angular/common/http";
+import { DialogModelComponent } from './utils/dialog-model/dialog-model.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { HttpClientModule } from "@angular/common/http";
     SignupComponent,
     HeaderComponent,
     RecipesComponent,
-    ViewRecipeComponent
+    ViewRecipeComponent,
+    DialogModelComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { HttpClientModule } from "@angular/common/http";
     AngularFireModule.initializeApp(environment.firebase_auth),
     AngularFireAuthModule
   ],
+  entryComponents: [DialogModelComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

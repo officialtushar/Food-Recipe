@@ -1,0 +1,11 @@
+<h1 mat-dialog-title class="recipe-name">Recipe Name</h1>
+<div mat-dialog-content>
+  <p>What's your favorite Recipe?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.recipe">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.recipe" cdkFocusInitial >Ok</button>
+</div>

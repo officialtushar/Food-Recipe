@@ -2,7 +2,7 @@
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title [ngClass]="{ 'cut-length': recipe.name.length > 10 }">{{
+      <mat-card-title [ngClass]="{ 'cut-length': recipe.name?.length > 10 }">{{
         recipe.name | titlecase
       }}</mat-card-title>
       <mat-card-subtitle></mat-card-subtitle>
@@ -65,7 +65,7 @@
       </mat-list-item> -->
         <mat-list>
           <mat-list-item
-            *ngFor="let ingredient of recipe.ingredients; let i = index"
+            *ngFor="let ingredient of recipe?.ingredients; let i = index"
           >
             <mat-icon mat-list-icon>label</mat-icon>
             <h4 mat-line id="editable-{{i}}"  matTooltip="Press enter To Save edit" (keyup.enter)="editValue(recipe,ingredient,i,$event)">{{ ingredient | titlecase }}</h4>

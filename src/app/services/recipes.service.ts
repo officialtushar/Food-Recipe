@@ -58,4 +58,12 @@ export class RecipesService {
       })
     );
   }
+
+  addRecipe(payload) {
+    return this.http.post(environment.dev_url +  'recipes', payload).pipe(
+      map(res => {
+        return res;
+      })
+    );
+  }
 }
