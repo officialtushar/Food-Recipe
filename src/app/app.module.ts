@@ -2,6 +2,11 @@ import { ViewRecipeComponent } from './module/view-recipe/view-recipe.component'
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, Sanitizer } from "@angular/core";
 
+import {environment} from '../../src/environments/environment.dev';
+
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -33,6 +38,8 @@ import { HttpClientModule } from "@angular/common/http";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase_auth),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

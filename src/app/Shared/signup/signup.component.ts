@@ -1,8 +1,10 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 
 import {ErrorStateMatcher} from '@angular/material/core';
+
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -32,9 +34,18 @@ export class SignupComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+
+  }
+  onSubmit(user) {
+    console.log('hey');
+    console.log(user);
+    this.authService.setAuthentication(user);
+
   }
 
 }

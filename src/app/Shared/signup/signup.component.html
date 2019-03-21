@@ -9,21 +9,21 @@
     <form class="example-form">
       <mat-form-field class="example-full-width">
         <input
-          matInput
-          placeholder="Username"
-          [formControl]="emailFormControl"
-          [errorStateMatcher]="matcher"
+        matInput
+        placeholder="Email"
+        [formControl]="emailFormControl"
+        #email
         />
         <mat-error
           *ngIf="
-            emailFormControl.hasError('username') &&
+            emailFormControl.hasError('email') &&
             !emailFormControl.hasError('required')
           "
         >
-          Please enter a valid username
+          Please enter a valid email address
         </mat-error>
         <mat-error *ngIf="emailFormControl.hasError('required')">
-          Username is <strong>required</strong>
+          Email is <strong>required</strong>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
@@ -32,11 +32,13 @@
           placeholder="Password"
           [formControl]="passwordFormControl"
           [errorStateMatcher]="matcher"
+          type="password"
+          #password
         />
         <mat-error
           *ngIf="
             passwordFormControl.hasError('password') &&
-            !emailFormControl.hasError('required')
+            !passwordFormControl.hasError('required')
           "
         >
           Please enter a valid password
@@ -47,6 +49,6 @@
       </mat-form-field>
     </form>
 
-    <button mat-stroked-button>Submit</button>
+    <button mat-stroked-button (click)="onSubmit({email: email.value, password: password.value})">Submit</button>
   </mat-card>
 </div>
