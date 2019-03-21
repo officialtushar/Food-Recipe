@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
 
     this.authService.getUserLoggedIn().subscribe((user) => {
       this.user  = user;
-      console.log(this.user);
+      // console.log(this.user);
     });
     this.recipeObservable.recipeRouteObservable.subscribe((updateRoute) => {
       console.log('update route', updateRoute)
@@ -43,4 +43,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['recipes']);
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }

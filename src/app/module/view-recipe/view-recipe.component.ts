@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RecipesService } from 'src/app/services/recipes.service';
@@ -24,18 +25,24 @@ export class ViewRecipeComponent implements OnInit {
   recipeId: String;
   recipe :any;
   value = '';
+  user: any;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private recipeService: RecipesService,
     private snackbar: MatSnackBar,
-    private recipeObservable: RecipeObservableService
+    private recipeObservable: RecipeObservableService,
+    private authService: AuthService
 
   ) { }
 
+
   ngOnInit() {
 
-
+    this.authService.getUserLoggedIn().subscribe((user) => {
+      this.user  = user;
+      // console.log(this.user);
+    });
 
 
     this.recipeId = this.route.snapshot.paramMap.get('id');

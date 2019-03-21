@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {AngularFireAuth} from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +11,13 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class AppComponent implements OnInit{
   title = 'Food-Recipe';
 
-  user: firebase.User;
-
   constructor(
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private router: Router,
   ) {
-
   }
 
   ngOnInit() {
-    this.afAuth.authState.subscribe((user) => {
-      console.log(user);
-      this.user = user;
-    })
+
   }
 }

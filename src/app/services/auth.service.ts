@@ -1,12 +1,18 @@
 import { Injectable } from "@angular/core";
 
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from "@angular/router";
+
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+
+    ) {}
 
 
 
@@ -24,8 +30,10 @@ export class AuthService {
   checkAuthentication(user) {
     this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password)
     .then((result) => {
-      console.log(result);
-      return result
+      console.log(result.user.uid);
+      if(result.user.uid) {
+        this.router.navigate(['recipes']);
+      }
 
     })
     .catch((err) => {
@@ -43,10 +51,11 @@ export class AuthService {
    logout() {
      this.afAuth.auth.signOut()
      .then((result) => {
-       return result
-     })
-     .catch((err) => {
+      //  console.log('logout',result);
+       this.router.navigate(['login'])
+
+     }).catch(err => {
        console.log(err);
-     });
+     })
    }
 }

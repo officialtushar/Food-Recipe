@@ -6,6 +6,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 
 import {ErrorStateMatcher} from '@angular/material/core';
 import { fromEventPattern } from 'rxjs';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,6 +21,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  user: firebase.User;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -36,12 +39,20 @@ export class LoginComponent implements OnInit {
   constructor(
 
     private afAuth: AngularFireAuth,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) {
+    this.authService.getUserLoggedIn().subscribe((user) => {
+      this.user = user;
 
+      if(this.user !== null) {
+        this.router.navigate(['recipes'])
+      }
+    })
   }
 
   ngOnInit() {
+
 
 
   }
@@ -49,7 +60,8 @@ export class LoginComponent implements OnInit {
   onSubmit(user) {
     console.log('hey');
     console.log(user);
-    this.authService.checkAuthentication(user);
+    this.authService.checkAuthentication(user)
+
 
   }
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
@@ -21,6 +22,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+
+  user: firebase.User;
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -35,8 +38,18 @@ export class SignupComponent implements OnInit {
 
 
   constructor(
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private router: Router
+
+  ) {
+    this.authService.getUserLoggedIn().subscribe((user) => {
+      this.user = user;
+
+      if(this.user !== null) {
+        this.router.navigate(['recipes'])
+      }
+    })
+  }
 
   ngOnInit() {
 
