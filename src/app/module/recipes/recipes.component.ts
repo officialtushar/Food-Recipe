@@ -89,10 +89,19 @@ export class RecipesComponent implements OnInit {
   }
 
   getAllRecipes() {
-    this.recipeService.getRecipes().subscribe(recipes => {
+    this.recipeService.getRecipes().subscribe((recipes) => {
+      // console.log('recipes',recipes)
       this.allRecipes = recipes;
       console.log(this.allRecipes);
-    });
+    },
+    (error) => {
+      console.log('error in recipes component', error );
+      if(error.status === 404) {
+        this.recipeService.openSnackbar(error.message);
+      }
+    })
+
+
   }
 
   goToRecipies(recipe) {

@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import {  Observable, throwError} from "rxjs";
+import { catchError } from 'rxjs/operators';
 
 import { MatSnackBar } from "@angular/material";
 import {environment} from '../../environments/environment.dev';
@@ -25,8 +27,15 @@ export class RecipesService {
       map(res => {
         console.log("getting the data", res);
         return res;
+      }),
+      catchError((error) => {
+        return throwError(error);
       })
     );
+  }
+
+  private handleError(err :HttpErrorResponse) {
+    console.log(err);
   }
 
   getSpecificRecipe(recipeId) {
@@ -36,6 +45,9 @@ export class RecipesService {
       map(res => {
         console.log("getting the data", res);
         return res;
+      }),
+      catchError((error) => {
+        return throwError(error);
       })
     );
   }
@@ -48,6 +60,9 @@ export class RecipesService {
     return this.http.put(environment.dev_url +  'recipes/' + recipeId, payload).pipe(
       map(res => {
         return res;
+      }),
+      catchError((error) => {
+        return throwError(error);
       })
     );
   }
@@ -58,6 +73,9 @@ export class RecipesService {
     return this.http.delete(environment.dev_url +  'recipes/' + recipeId).pipe(
       map(res => {
         return res;
+      }),
+      catchError((error) => {
+        return throwError(error);
       })
     );
   }
@@ -66,6 +84,9 @@ export class RecipesService {
     return this.http.post(environment.dev_url +  'recipes', payload).pipe(
       map(res => {
         return res;
+      }),
+      catchError((error) => {
+        return throwError(error);
       })
     );
   }

@@ -43,7 +43,14 @@ export class ViewRecipeComponent implements OnInit {
       console.log("recipe found", recipe);
       this.recipe = recipe;
       this.recipeObservable.updateRecipeRoute(this.recipe.name, true);
-    });
+    },
+    (error) => {
+      // console.log('error in recipes component', error );
+      if(error.status === 404) {
+        this.recipeService.openSnackbar(error.message);
+      }
+    }
+    );
   }
 
   deleteRecipe(recipe, ingredient, index) {
