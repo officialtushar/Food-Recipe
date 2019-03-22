@@ -54,8 +54,7 @@ export class SignupComponent implements OnInit {
 
   }
   onSubmit(user) {
-    console.log('hey');
-    console.log(user);
+
     this.authService.setAuthentication(user);
 
   }

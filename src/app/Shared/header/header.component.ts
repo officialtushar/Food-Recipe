@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-
   goToRecipes() {
     this.router.navigate(['recipes']);
   }

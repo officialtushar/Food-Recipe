@@ -9,6 +9,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { fromEventPattern } from 'rxjs';
 import { Router } from '@angular/router';
+import { RecipeObservableService } from 'src/app/observables/recipe-observable.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+    private recipeObservable: RecipeObservableService,
   ) {
 
 
@@ -71,6 +73,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
+    this.recipeObservable.updateRecipeRoute(null, false);
 
 
   }

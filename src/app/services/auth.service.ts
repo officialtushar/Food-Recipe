@@ -29,7 +29,8 @@ export class AuthService {
 
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        this.recipeService.openSnackbar(err.message);
       })
   }
 
@@ -44,7 +45,8 @@ export class AuthService {
 
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
+      this.recipeService.openSnackbar(err.message);
     })
   }
 

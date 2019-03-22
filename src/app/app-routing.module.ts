@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'signup', pathMatch: 'full', component: SignupComponent},
   {path: 'recipes', pathMatch: 'full', component: RecipesComponent},
-  {path: 'recipes/:id', pathMatch: 'full', component: ViewRecipeComponent}
+  {path: 'recipes/:id', pathMatch: 'full', component: ViewRecipeComponent},
+  {path: '**', redirectTo: 'recipes'}
 ];
 
 
