@@ -80,7 +80,7 @@ export class RecipesService {
   deleteRecipe(recipeId) {
     console.log(recipeId);
     // console.log('payload',payload);
-    return this.http.delete(environment.dev_url +  'recipes/' + recipeId).pipe(
+    return this.http.delete(environment.dev_url +  'recipes/').pipe(
       map(res => {
         return res;
       }),

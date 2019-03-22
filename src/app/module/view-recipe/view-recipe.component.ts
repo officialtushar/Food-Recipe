@@ -58,7 +58,7 @@ export class ViewRecipeComponent implements OnInit {
     );
   }
 
-  deleteRecipe(recipe, ingredient, index) {
+  deleteIngredient(recipe, ingredient, index) {
     console.log("recipe", recipe);
     console.log("index", index);
     this.recipe.ingredients.splice(index, 1);
@@ -128,6 +128,12 @@ export class ViewRecipeComponent implements OnInit {
           panelClass: ["blue-snackbar"]
         });
         // this.recipe = updatedRecipe;
+      },
+      (error) => {
+        // console.log('error in recipes component', error );
+        if(error.status === 404) {
+          this.recipeService.openSnackbar(error.message);
+        }
       });
   }
 

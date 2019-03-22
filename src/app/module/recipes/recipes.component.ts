@@ -80,7 +80,14 @@ export class RecipesComponent implements OnInit {
               this.recipeService.openSnackbar('Recipe Added Successfully')
               this.getAllRecipes();
             }
-          });
+          },
+          (error) => {
+            if(error.status === 404) {
+              this.recipeService.openSnackbar('error while adding the recipe');
+
+            }
+          }
+          );
         }
 
       }
@@ -114,15 +121,21 @@ export class RecipesComponent implements OnInit {
   }
 
   removeRecipe(recipe, index) {
-    this.allRecipes.splice(index, 1);
 
-    console.log("recipe id", recipe._id);
 
     this.recipeService.deleteRecipe(recipe._id).subscribe(result => {
       if(result) {
+        this.allRecipes.splice(index, 1);
+        console.log("recipe id", recipe._id)
         this.recipeService.openSnackbar('Recipe deleted Successfully')
       }
       console.log("result retained", result);
+    },
+    (error) => {
+      // console.log('error in recipes component', error );
+      if(error.status === 404) {
+        this.recipeService.openSnackbar('error while deleting recipe');
+      }
     });
 
     console.log("total recipes", this.allRecipes);
