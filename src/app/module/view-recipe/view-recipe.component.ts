@@ -36,11 +36,6 @@ export class ViewRecipeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.getUserLoggedIn().subscribe(user => {
-      this.user = user;
-      // console.log(this.user);
-    });
-
     this.recipeId = this.route.snapshot.paramMap.get("id");
     console.log("recipe id", this.recipeId);
 

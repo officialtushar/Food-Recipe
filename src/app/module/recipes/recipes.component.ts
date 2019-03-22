@@ -63,16 +63,28 @@ export class RecipesComponent implements OnInit {
       console.log("The dialog was closed");
 
       console.log(result);
-      const payload = {
-        name: result
-      };
-
-      this.recipeService.addRecipe(payload).subscribe(result => {
-        console.log(result);
-        if (result) {
-          this.getAllRecipes();
+      if(result !== undefined)
+      {
+        if(result === '') {
+          this.recipeService.openSnackbar('Recipe Cannot be empty');
         }
-      });
+
+        if(result !== '') {
+          const payload = {
+            name: result
+          };
+
+          this.recipeService.addRecipe(payload).subscribe(result => {
+            console.log(result);
+            if (result) {
+              this.recipeService.openSnackbar('Recipe Added Successfully')
+              this.getAllRecipes();
+            }
+          });
+        }
+
+      }
+
     });
   }
 
@@ -98,6 +110,9 @@ export class RecipesComponent implements OnInit {
     console.log("recipe id", recipe._id);
 
     this.recipeService.deleteRecipe(recipe._id).subscribe(result => {
+      if(result) {
+        this.recipeService.openSnackbar('Recipe deleted Successfully')
+      }
       console.log("result retained", result);
     });
 

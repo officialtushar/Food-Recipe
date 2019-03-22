@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 
+import { MatSnackBar } from "@angular/material";
 import {environment} from '../../environments/environment.dev';
 
 @Injectable({
@@ -9,7 +10,9 @@ import {environment} from '../../environments/environment.dev';
 })
 export class RecipesService {
   options: any;
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private snackbar: MatSnackBar) {
     const header = new Headers({ "Content-Type": "application/json" });
     this.options = header;
   }
@@ -66,4 +69,13 @@ export class RecipesService {
       })
     );
   }
+
+  openSnackbar(message) {
+
+    this.snackbar.open(message, '' ,{
+      duration: 2000,
+    });
+  }
+
+
 }
