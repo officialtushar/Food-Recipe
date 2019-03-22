@@ -1,14 +1,7 @@
-<mat-icon
-  class="add-recipe"
-  matTooltip="Action not allowed"
-  style="color: #666666"
-  *ngIf="user === null"
-  (click)="openSnackbar()"
-  >add_box</mat-icon
->
+
 <div id="card-container">
-  <mat-card class="add-card">
-    <mat-icon class="add-recipe" *ngIf="user !== null" (click)="openDialog()"
+  <mat-card class="add-card" *ngIf="user !== null">
+    <mat-icon class="add-recipe"  (click)="openDialog()"
       >add_box</mat-icon
     >
   </mat-card>
