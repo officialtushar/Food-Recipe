@@ -147,7 +147,7 @@ export class ViewRecipeComponent implements OnInit {
 
     console.log(this.recipe);
   }
-  
+
 
   openSnackbar() {
     this.snackbar.open('You are not a Authenticate User , Please register', "", {
@@ -155,4 +155,5 @@ export class ViewRecipeComponent implements OnInit {
       panelClass: ["blue-snackbar"]
     });
 
+  }
 }

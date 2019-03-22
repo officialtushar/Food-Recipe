@@ -20,8 +20,17 @@
   font-size: 21px
 }
 
+::placeholder {
+  letter-spacing: 1px;
+}
+
+.ingredients-list {
+  letter-spacing: 1px;
+}
+
 .add-text {
-  font-size: 15px
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
 .example-form-field {
@@ -37,11 +46,13 @@ mat-card-title {
   color: #45a29e;
   width: auto;
   position: absolute;
+  letter-spacing: 1px;
   // right: 20%;
 }
 
 mat-panel-title {
-  color: #45a29e
+  color: #45a29e;
+  letter-spacing: 1px;
 }
 
 .mat-chip-list-wrapper .mat-standard-chip {

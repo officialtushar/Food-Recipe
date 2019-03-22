@@ -1,23 +1,49 @@
-<mat-icon class="add-recipe" *ngIf="user !== null" (click)="openDialog()">add_box</mat-icon>
-<mat-icon class="add-recipe"  matTooltip="Action not allowed" style="color: #666666" *ngIf="user === null"  (click)="openSnackbar()">add_box</mat-icon>
+<mat-icon
+  class="add-recipe"
+  matTooltip="Action not allowed"
+  style="color: #666666"
+  *ngIf="user === null"
+  (click)="openSnackbar()"
+  >add_box</mat-icon
+>
 <div id="card-container">
-
-  <mat-card class="example-card" *ngFor="let recipe of allRecipes; let i = index">
+  <mat-card class="add-card">
+    <mat-icon class="add-recipe" *ngIf="user !== null" (click)="openDialog()"
+      >add_box</mat-icon
+    >
+  </mat-card>
+  <mat-card class="add-card" *ngIf="user === null">
+    <mat-icon class="add-recipe"  matTooltip="Action not allowed" (click)="openSnackbar()" style="color: #666666"
+      >add_box</mat-icon
+    >
+  </mat-card>
+  <mat-card
+    class="example-card"
+    *ngFor="let recipe of allRecipes; let i = index"
+  >
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title [ngClass]="{ 'cut-length': recipe.name?.length > 10 }">{{
         recipe.name | titlecase
       }}</mat-card-title>
 
-      <mat-icon class="menu-icon"  *ngIf="user !== null" [matMenuTriggerFor]="menu"
+      <mat-icon
+        class="menu-icon"
+        *ngIf="user !== null"
+        [matMenuTriggerFor]="menu"
         >more_horiz</mat-icon
       >
-      <mat-icon class="menu-icon" matTooltip="Action not allowed" style="color: #666666" *ngIf="user === null"  (click)="openSnackbar()"
+      <mat-icon
+        class="menu-icon"
+        matTooltip="Action not allowed"
+        style="color: #666666"
+        *ngIf="user === null"
+        (click)="openSnackbar()"
         >more_horiz</mat-icon
       >
 
       <mat-menu #menu="matMenu" style="background: #3b4757">
-        <button mat-menu-item (click)="removeRecipe(recipe,i)">
+        <button mat-menu-item (click)="removeRecipe(recipe, i)">
           <mat-icon>delete_outline</mat-icon>
           <span>DELETE</span>
         </button>

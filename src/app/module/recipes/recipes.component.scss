@@ -7,14 +7,28 @@
   border-radius: 5%;
 }
 
+.add-card {
+  max-width: 200px;
+  width: 50%;
+  // max-height: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5%;
+  background: #C5C6C7;
+  // border:
+  border:  1px solid #9abebe;
+}
+
 
 
 .add-recipe {
   position: relative;
   top: 65px;
   left: 5%;
-  font-size: 34px;
+  font-size: 180px;
   cursor: pointer;
+  color: #1f2833;
 }
 
 .example-header-image {
@@ -25,6 +39,7 @@ mat-card-title {
   color: #45a29e;
   width: auto;
   position: absolute;
+  letter-spacing: 1px;
   // right: 20%;
 }
 

@@ -3,6 +3,8 @@
   background: #1F2833;
  }
 
+
+
  .nav-title {
    color: #45A29E;
   //  cursor: pointer;
@@ -11,12 +13,14 @@
  span.nav-title-route {
     color: white;
     font-size: 22px;
+    letter-spacing: 1px;
     // cursor: pointer;
  }
  span.nav-title-fixed {
     color: white;
     font-size: 22px;
     cursor: pointer;
+    letter-spacing: 1px;
  }
 
  .logout {

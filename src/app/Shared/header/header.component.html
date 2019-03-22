@@ -9,7 +9,7 @@
 
 
     <mat-icon class="logout" *ngIf="user?.uid" matTooltip="logout" (click)="logout()">save_alt</mat-icon>
-    <span class="login"  *ngIf="user == null" >Login</span>
-    <span class="signup"  *ngIf="user == null" >Signup </span>
+    <span class="login"  *ngIf="user == null" [routerLink]="'/login'" >Login</span>
+    <span class="signup"  *ngIf="user == null" [routerLink]="'/signup'">Signup </span>
   </mat-toolbar-row>
 </mat-toolbar>
