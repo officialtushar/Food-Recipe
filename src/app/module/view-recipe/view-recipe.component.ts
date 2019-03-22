@@ -41,8 +41,13 @@ export class ViewRecipeComponent implements OnInit {
 
     this.recipeService.getSpecificRecipe(this.recipeId).subscribe(recipe => {
       console.log("recipe found", recipe);
-      this.recipe = recipe;
-      this.recipeObservable.updateRecipeRoute(this.recipe.name, true);
+      if(recipe['data'] === false) {
+        this.recipeService.openSnackbar('No data found');
+      } else {
+        this.recipe = recipe;
+        this.recipeObservable.updateRecipeRoute(this.recipe.name, true);
+      }
+
     },
     (error) => {
       // console.log('error in recipes component', error );

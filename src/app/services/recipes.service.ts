@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { map } from "rxjs/operators";
@@ -14,7 +15,9 @@ export class RecipesService {
   options: any;
   constructor(
     private http: HttpClient,
-    private snackbar: MatSnackBar) {
+    private snackbar: MatSnackBar,
+    private router: Router
+    ) {
     const header = new Headers({ "Content-Type": "application/json" });
     this.options = header;
   }
@@ -43,10 +46,17 @@ export class RecipesService {
 
     return this.http.get(environment.dev_url +  'recipes/' + recipeId).pipe(
       map(res => {
-        console.log("getting the data", res);
-        return res;
+
+        if( res['kind'] !== 'ObjectId') {
+          return res
+        }
+        if(res['kind'] === 'ObjectId') {
+          this.router.navigate(['recipes']);
+          return {data: false}
+        }
       }),
       catchError((error) => {
+        console.log(error);
         return throwError(error);
       })
     );
