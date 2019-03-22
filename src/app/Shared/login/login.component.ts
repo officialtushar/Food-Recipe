@@ -42,13 +42,14 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
   ) {
-    this.authService.getUserLoggedIn().subscribe((user) => {
-      this.user = user;
 
-      if(this.user !== null) {
-        this.router.navigate(['recipes'])
-      }
-    })
+    // console.log('token exist',JSON.parse(localStorage.getItem('token')));
+
+    this.user = JSON.parse(localStorage.getItem('token'));
+    console.log('token exist',this.user);
+    if(this.user !== null) {
+      this.router.navigate(['recipes']);
+    }
   }
 
   ngOnInit() {

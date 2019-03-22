@@ -42,13 +42,11 @@ export class SignupComponent implements OnInit {
     private router: Router
 
   ) {
-    this.authService.getUserLoggedIn().subscribe((user) => {
-      this.user = user;
-
-      if(this.user !== null) {
-        this.router.navigate(['recipes'])
-      }
-    })
+    this.user = JSON.parse(localStorage.getItem('token'));
+    console.log('token exist',this.user);
+    if(this.user !== null) {
+      this.router.navigate(['recipes']);
+    }
   }
 
   ngOnInit() {

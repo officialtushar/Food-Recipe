@@ -9,6 +9,7 @@
 
 
     <mat-icon class="logout" *ngIf="user?.uid" matTooltip="logout" (click)="logout()">save_alt</mat-icon>
-    <span class="login-signup"  *ngIf="user == null" >Login | Signup</span>
+    <span class="login"  *ngIf="user == null" >Login</span>
+    <span class="signup"  *ngIf="user == null" >Signup </span>
   </mat-toolbar-row>
 </mat-toolbar>
